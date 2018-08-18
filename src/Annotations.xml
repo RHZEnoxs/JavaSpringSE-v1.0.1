@@ -1,0 +1,51 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context = "http://www.springframework.org/schema/context"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:annotation-config/>
+    <!-- bean definitions go here -->
+
+    <!--@Required Annotation-->
+    <bean id = "objectTypeC" class = "com.enoxs.datadef.ObjectTypeC">
+        <property name = "name" value = "Enoxs" />
+        <property name = "no" value = "172" />
+    </bean>
+
+    <bean id = "objectTypeC1" class = "com.enoxs.datadef.ObjectTypeC1">
+        <property name = "name" value = "RHZ" />
+        <property name = "no" value = "180" />
+    </bean>
+    <!--@Qualifier Annotation-->
+    <bean id = "objectTypeD" class = "com.enoxs.datadef.ObjectTypeD"></bean>
+
+    <bean id = "objTypC1" class = "com.enoxs.datadef.ObjectTypeC">
+        <property name = "name" value = "Enoxs" />
+        <property name = "no" value = "172" />
+    </bean>
+
+    <bean id = "objTypC2" class = "com.enoxs.datadef.ObjectTypeC">
+        <property name = "name" value = "RHZ" />
+        <property name = "no" value = "180" />
+    </bean>
+
+
+
+    <!--Spring - Annotation Based Configuration-->
+
+    <!--<bean id="textSEv3" class="com.enoxs.injection.TextSEv3"></bean>-->
+
+    <!--<bean id="textSEv3_1" class="com.enoxs.injection.TextSEv3_1"></bean>-->
+
+    <!--<bean id="textSEv3_2" class="com.enoxs.injection.TextSEv3_2"></bean>-->
+
+
+
+    <!-- Definition for spellChecker bean -->
+    <bean id="spellChecker" class="com.enoxs.datadef.SpellChecker"></bean>
+</beans>
