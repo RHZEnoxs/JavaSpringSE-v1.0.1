@@ -174,12 +174,16 @@ public class Taskv2 extends Task{
      * AOP - Aspect Orientied Programming
      * XML Schema Based AOP with Spring
      * @AspectJ Based AOP with Spring
+     * aspectjrt.jar
+     * aspectjweaver.jar
+     * aspectj.jar
+     * aopalliance.jar
      */
     void runTask10() {
-        ObjectTypeC3 student = (ObjectTypeC3) context.getBean("student");
-        student.getName();
-        student.getNo();
-        student.printThrowException();
+        ObjectTypeC3 objectTypeC3 = (ObjectTypeC3) context.getBean("objectTypeC3");
+        objectTypeC3.getName();
+        objectTypeC3.getNo();
+        objectTypeC3.printThrowException();
     }
 
 }

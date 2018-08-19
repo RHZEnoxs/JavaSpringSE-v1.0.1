@@ -1,5 +1,7 @@
 package com.enoxs;
 
+import com.enoxs.tasks.Taskv2;
+import com.enoxs.tasks.Taskv3;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -73,8 +75,11 @@ public class MainApp {
 		 * Taskv2.10
 		 */
 //		context = new ClassPathXmlApplicationContext("Aop.xml");
-		ApplicationContext context = new ClassPathXmlApplicationContext("Aop.xml");
-
+		/**
+		 * 10.
+		 * Taskv3.2
+		 */
+		context = new ClassPathXmlApplicationContext("JDBC.xml");
 	}
 	void initTask(){
 //		new Taskv1(context).runTask();// 1.
@@ -84,6 +89,8 @@ public class MainApp {
 //		new Taskv2().runTask();// 5. 7.
 //		new Taskv2(configContext).runTask();// 8.
 //		new Taskv2(context).runTask();// 9.
+		new Taskv3(context).runTask();// 10.
+//		new Taskv3().runTask();// 10.
 	}
 	public static void main(String[] args) {
 		// TODO 自動產生的方法 Stub
