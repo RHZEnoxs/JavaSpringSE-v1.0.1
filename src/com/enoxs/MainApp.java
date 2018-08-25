@@ -1,6 +1,5 @@
 package com.enoxs;
 
-import com.enoxs.tasks.Taskv2;
 import com.enoxs.tasks.Taskv3;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -80,6 +79,16 @@ public class MainApp {
 		 * Taskv3.2
 		 */
 		context = new ClassPathXmlApplicationContext("JDBC.xml");
+		/**
+		 * 11.
+		 * Taskv3.4
+		 */
+		context = new ClassPathXmlApplicationContext("ProgrammaticTransaction.xml");
+		/**
+		 * 12.
+		 * Taskv3.5
+		 */
+		context = new ClassPathXmlApplicationContext("DeclarativeTransaction.xml");
 	}
 	void initTask(){
 //		new Taskv1(context).runTask();// 1.
@@ -89,7 +98,7 @@ public class MainApp {
 //		new Taskv2().runTask();// 5. 7.
 //		new Taskv2(configContext).runTask();// 8.
 //		new Taskv2(context).runTask();// 9.
-		new Taskv3(context).runTask();// 10.
+		new Taskv3(context).runTask();// 10. 11.
 //		new Taskv3().runTask();// 10.
 	}
 	public static void main(String[] args) {

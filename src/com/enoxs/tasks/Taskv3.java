@@ -1,18 +1,13 @@
 package com.enoxs.tasks;
 
 import com.enoxs.datadef.*;
-import com.enoxs.event.CustomEventPublisher;
-import com.enoxs.injection.TextSEv0;
-import com.enoxs.injection.TextSEv3_3;
-import com.enoxs.jdbc.ObjectTypeF;
-import com.enoxs.jdbc.ObjectTypeFJDBCTemplate;
-import com.enoxs.jdbc.Student;
-import com.enoxs.jdbc.StudentJDBCTemplate;
+import com.enoxs.jdbc.*;
+import com.enoxs.transaction.StudentMarks;
+import com.enoxs.transaction.ProgrammaticJDBCTemplate;
+import com.enoxs.transaction.StudentsDAO;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 
@@ -34,7 +29,10 @@ public class Taskv3 extends Task{
 
     public void runTask(){
 //        runTask1();
-        runTask2();
+//        runTask2();
+//        runTask3();
+//        runTask4();
+        runTask5();
     }
     /**
      * @AspectJ Based AOP with Spring
@@ -78,18 +76,87 @@ public class Taskv3 extends Task{
         System.out.println(", Age : " + student.getAge());
     }
 
+    /**
+     * SQL Stored Procedure in Spring
+     * The SimpleJdbcCall class
+     */
+
     @Override
     void runTask3() {
+        StudentJDBCTemplate studentJDBCTemplate =
+                (StudentJDBCTemplate)context.getBean("studentJDBCTemplate");
 
+        System.out.println("------Records Creation--------" );
+        studentJDBCTemplate.create("Zara", 11);
+        studentJDBCTemplate.create("Nuha", 2);
+        studentJDBCTemplate.create("Ayan", 15);
+
+        System.out.println("------Listing Multiple Records--------" );
+        List<Student> students = studentJDBCTemplate.listStudents();
+
+        for (Student record : students) {
+            System.out.print("ID : " + record.getId() );
+            System.out.print(", Name : " + record.getName() );
+            System.out.println(", Age : " + record.getAge());
+        }
+        System.out.println("----Listing Record with ID = 2 -----" );
+        Student student = studentJDBCTemplate.getStudent(11);
+        System.out.print("ID : " + student.getId() );
+        System.out.print(", Name : " + student.getName() );
+        System.out.println(", Age : " + student.getAge());
     }
 
+    /**
+     * Transaction Management
+     * Programmatic Transaction Management
+     */
     @Override
     void runTask4() {
+        ProgrammaticJDBCTemplate studentsJDBCTemplate =
+                (ProgrammaticJDBCTemplate)context.getBean("studentsJDBCTemplate");
+/*
+        System.out.println("------Records creation--------" );
+        studentsJDBCTemplate.create("Zara", 11, 99, 2010);
+        studentsJDBCTemplate.create("Nuha", 20, 97, 2010);
+        studentsJDBCTemplate.create("Ayan", 25, 100, 2011);
+*/
 
+        System.out.println("------Listing all the records--------" );
+        List<StudentMarks> studentMarks = studentsJDBCTemplate.listStudents();
+
+        for (StudentMarks record : studentMarks) {
+            System.out.print("ID : " + record.getId() );
+            System.out.print(", Name : " + record.getName() );
+            System.out.print(", Marks : " + record.getMarks());
+            System.out.print(", Year : " + record.getYear());
+            System.out.println(", Age : " + record.getAge());
+        }
     }
 
+    /**
+     * Transaction Management
+     * Declarative Transaction Management
+     */
     @Override
     void runTask5() {
+        StudentsDAO studentJDBCTemplate =
+                (StudentsDAO)context.getBean("studentJDBCTemplate");
+
+        System.out.println("------Records creation--------" );
+        studentJDBCTemplate.create("Zara", 11, 99, 2010);
+        studentJDBCTemplate.create("Nuha", 20, 97, 2010);
+        studentJDBCTemplate.create("Ayan", 25, 100, 2011);
+
+        System.out.println("------Listing all the records--------" );
+        List<StudentMarks> studentMarks = studentJDBCTemplate.listStudents();
+
+        for (StudentMarks record : studentMarks) {
+            System.out.print("ID : " + record.getId() );
+            System.out.print(", Name : " + record.getName() );
+            System.out.print(", Marks : " + record.getMarks());
+            System.out.print(", Year : " + record.getYear());
+            System.out.println(", Age : " + record.getAge());
+        }
 
     }
 
