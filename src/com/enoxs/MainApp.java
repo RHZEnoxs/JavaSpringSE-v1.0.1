@@ -1,17 +1,28 @@
 package com.enoxs;
 
+import com.enoxs.mybatis.model.User;
 import com.enoxs.tasks.Taskv3;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.io.Reader;
+
 
 public class MainApp {
+//	static Log log = LogFactory.getLog(MainApp.class.getName());
+	static Logger log = Logger.getLogger(MainApp.class.getName());
 	ApplicationContext context;
 	XmlBeanFactory factory;
 	AbstractApplicationContext abstractContext;
 	ConfigurableApplicationContext configContext;
+
 	public MainApp(){
 		init();
 	}
@@ -27,6 +38,11 @@ public class MainApp {
 	 * 5. ConfigurableApplicationContext Container
 	 */
 	void initContainer(){
+		/**
+		 * 0. Log4j
+		 * Task3.6
+		 */
+//		context = new ClassPathXmlApplicationContext("BeansLog4j.xml");
 		/**
 		 * 1.
 		 * Taskv1.1 | Taskv1.2 | Taskv1.6
@@ -78,17 +94,19 @@ public class MainApp {
 		 * 10.
 		 * Taskv3.2
 		 */
-		context = new ClassPathXmlApplicationContext("JDBC.xml");
+//		context = new ClassPathXmlApplicationContext("JDBC.xml");
 		/**
 		 * 11.
 		 * Taskv3.4
 		 */
-		context = new ClassPathXmlApplicationContext("ProgrammaticTransaction.xml");
+//		context = new ClassPathXmlApplicationContext("ProgrammaticTransaction.xml");
 		/**
 		 * 12.
 		 * Taskv3.5
 		 */
-		context = new ClassPathXmlApplicationContext("DeclarativeTransaction.xml");
+//		context = new ClassPathXmlApplicationContext("DeclarativeTransaction.xml");
+
+
 	}
 	void initTask(){
 //		new Taskv1(context).runTask();// 1.
@@ -98,8 +116,9 @@ public class MainApp {
 //		new Taskv2().runTask();// 5. 7.
 //		new Taskv2(configContext).runTask();// 8.
 //		new Taskv2(context).runTask();// 9.
-		new Taskv3(context).runTask();// 10. 11.
+//		new Taskv3(context).runTask();// 10. 11.
 //		new Taskv3().runTask();// 10.
+		new Taskv3();
 	}
 	public static void main(String[] args) {
 		// TODO 自動產生的方法 Stub

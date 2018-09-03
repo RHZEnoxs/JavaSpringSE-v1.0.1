@@ -3,13 +3,12 @@
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
       <configuration>
-        <fileset id="fileset" name="Beans" removed="false">
-          <file>file://$MODULE_DIR$/src/Beans.xml</file>
-          <file>file://$MODULE_DIR$/src/LifeCycle.xml</file>
-          <file>file://$MODULE_DIR$/src/Annotations.xml</file>
-          <file>file://$MODULE_DIR$/src/LifeCycle3.xml</file>
-          <file>file://$MODULE_DIR$/src/LifeCycle1.xml</file>
-          <file>file://$MODULE_DIR$/src/AOP.xml</file>
+        <fileset id="fileset" name="JDBC" removed="false">
+          <file>file://$MODULE_DIR$/src/JDBC.xml</file>
+          <file>file://$MODULE_DIR$/src/Transaction.xml</file>
+          <file>file://$MODULE_DIR$/src/DeclarativeTransaction.xml</file>
+          <file>file://$MODULE_DIR$/src/HelloWeb-servlet.xml</file>
+          <file>file://$MODULE_DIR$/src/Log4j.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -21,6 +20,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="commons-logging-1.2" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="log4j-1.2.16" level="project" />
+    <orderEntry type="library" name="mybatis-3.0.2" level="project" />
   </component>
 </module>

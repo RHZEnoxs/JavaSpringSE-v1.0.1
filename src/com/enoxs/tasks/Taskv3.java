@@ -1,10 +1,14 @@
 package com.enoxs.tasks;
 
+import com.enoxs.MainApp;
 import com.enoxs.datadef.*;
 import com.enoxs.jdbc.*;
+import com.enoxs.mybatis.model.User;
 import com.enoxs.transaction.StudentMarks;
 import com.enoxs.transaction.ProgrammaticJDBCTemplate;
 import com.enoxs.transaction.StudentsDAO;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -12,6 +16,8 @@ import org.springframework.context.support.AbstractApplicationContext;
 import java.util.List;
 
 public class Taskv3 extends Task{
+//    static Log log = LogFactory.getLog(Taskv3.class.getName());
+    static Logger log = Logger.getLogger(Taskv3.class.getName());
     ApplicationContext context;
     AbstractApplicationContext abstractContext;
     ConfigurableApplicationContext configContext;
@@ -32,7 +38,9 @@ public class Taskv3 extends Task{
 //        runTask2();
 //        runTask3();
 //        runTask4();
-        runTask5();
+//        runTask5();
+//        runTask6();
+        runTask7();
     }
     /**
      * @AspectJ Based AOP with Spring
@@ -160,14 +168,35 @@ public class Taskv3 extends Task{
 
     }
 
+    /**
+     * Log4j
+     */
+
     @Override
     void runTask6() {
-
+        log.info("Going to create HelloWord Obj");
+        HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
+        obj.getMessage();
+        log.info("Exiting the program");
     }
+
+    /**
+     * MyBatis Demo
+     */
+
+
+
 
     @Override
     void runTask7() {
-
+        SqlSession session = MainApp.sqlSessionFactory.openSession();
+        try {
+            User user = (User) session.selectOne("com.enoxs.mybatis.model.UserMapper.selectUserByID", 1);
+            System.out.println(user.getUserAddress());
+            System.out.println(user.getUserName());
+        } finally {
+            session.close();
+        }
     }
 
     @Override
