@@ -184,19 +184,8 @@ public class Taskv3 extends Task{
      * MyBatis Demo
      */
 
-
-
-
     @Override
     void runTask7() {
-        SqlSession session = MainApp.sqlSessionFactory.openSession();
-        try {
-            User user = (User) session.selectOne("com.enoxs.mybatis.model.UserMapper.selectUserByID", 1);
-            System.out.println(user.getUserAddress());
-            System.out.println(user.getUserName());
-        } finally {
-            session.close();
-        }
     }
 
     @Override
